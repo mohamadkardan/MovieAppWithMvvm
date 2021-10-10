@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.simpleappwithmvvm.model.Movie" />
+
+        <variable
+            name="viewModel"
+            type="com.example.simpleappwithmvvm.viewmodel.MainViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{(v) -> viewModel.standardItemOnClick(movie,v)}"
+        android:orientation="vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/roundedImageview_itemStandardMovie"
+            imageUrl="@{movie.poster_path}"
+            android:layout_width="150dp"
+            android:layout_height="170dp"
+            android:elevation="8dp"
+            app:riv_corner_radius="16dp" />
+
+        <TextView
+            android:id="@+id/textviewTitle_itemStandardMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:padding="4dp"
+            android:text="@{movie.original_title,default=title}"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</layout>
